@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "62003886288",
+    "project_id": "mdm-restaurant",
+    "storage_bucket": "mdm-restaurant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62003886288:android:567d394346feab436106d5",
+        "android_client_info": {
+          "package_name": "com.example.mdmrest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62003886288-ugeq69sgcuc4bdql1rhae6ska7fdmb9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB_JX0M3onBYArDwHTjDVpL4H7nMPGA6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62003886288-ugeq69sgcuc4bdql1rhae6ska7fdmb9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62003886288:android:4603e8f5abd7aa3b6106d5",
+        "android_client_info": {
+          "package_name": "com.example.secondmd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62003886288-ugeq69sgcuc4bdql1rhae6ska7fdmb9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB_JX0M3onBYArDwHTjDVpL4H7nMPGA6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62003886288-ugeq69sgcuc4bdql1rhae6ska7fdmb9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62003886288:android:e296232eb7d978fe6106d5",
+        "android_client_info": {
+          "package_name": "com.example.secondmdm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62003886288-ugeq69sgcuc4bdql1rhae6ska7fdmb9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB_JX0M3onBYArDwHTjDVpL4H7nMPGA6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62003886288-ugeq69sgcuc4bdql1rhae6ska7fdmb9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
