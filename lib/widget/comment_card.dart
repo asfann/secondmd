@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../model/user.dart';
 import '../providers/user_provider.dart';
-import '../resources/firestore_methods.dart';
 
 class CommentCard extends StatefulWidget {
   final snap;
@@ -28,10 +26,6 @@ class _CommentCardState extends State<CommentCard> {
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            backgroundImage: NetworkImage(widget.snap['profilePic']),
-            radius: 18,
-          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(
@@ -44,21 +38,12 @@ class _CommentCardState extends State<CommentCard> {
                   RichText(
                     text: TextSpan(children: [
                       TextSpan(
-                          text: widget.snap['name'],
+                          text: widget.snap['surname'],
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                       TextSpan(
-                        text: widget.snap['text'],
+                        text: widget.snap['email'],
                       ),
                     ]),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4),
-                    child: Text(
-                      DateFormat.yMMMd()
-                          .format(widget.snap['datePublished'].toDate()),
-                      style: const TextStyle(
-                          fontSize: 12, fontWeight: FontWeight.w400),
-                    ),
                   ),
                 ],
               ),

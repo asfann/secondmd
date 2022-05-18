@@ -25,7 +25,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
   void postImage(
     String uid,
     String name,
-
   ) async {
     setState(() {
       _isLoading = true;

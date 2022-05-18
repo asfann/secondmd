@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:secondmd/screens/add_post_screen.dart';
+import 'package:secondmd/screens/add_table_screen.dart';
+import 'package:secondmd/screens/add_waiter_screen.dart';
 import '../widget/rounded_elecated_button.dart';
 
 class MobileScreenLayout extends StatefulWidget {
@@ -10,7 +12,6 @@ class MobileScreenLayout extends StatefulWidget {
 }
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
-  int _page = 0;
   late PageController pageController;
 
   @override
@@ -25,11 +26,6 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
     super.dispose();
   }
 
-  void onPageChanged(int page) {
-    setState(() {
-      _page = page;
-    });
-  }
 
   void navigationTapped(int page) {
     pageController.jumpToPage(page);
@@ -38,37 +34,41 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child:  Column(
-          children: [
-            RoundedElevatedButton(title: 'Waiters', onPressed: () {
-              
-            },   padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.4,
-              vertical: MediaQuery.of(context).size.height * 0.02,
-            ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            RoundedElevatedButton(title: 'Tables', onPressed: () {
-           
-            },    padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.4,
-              vertical: MediaQuery.of(context).size.height * 0.02,
-            ),
+      body: SafeArea(
+        child: Container(
+          child:  Column(
+            children: [
+              RoundedElevatedButton(title: 'Waiters', onPressed: () {
 
-            ),
-            SizedBox(
-              height: 10,
-            ), RoundedElevatedButton(title: 'Dishes ', onPressed: () {
-               Navigator.push(context, MaterialPageRoute(builder: (context) => const AddPostScreen()));
-            },    padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.4,
-              vertical: MediaQuery.of(context).size.height * 0.02,
-            ),
-            )
-          ],
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWaiterScreen()));
+              },   padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.4,
+                vertical: MediaQuery.of(context).size.height * 0.02,
+              ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              RoundedElevatedButton(title: 'Tables', onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddTableScreen()));
+             
+              },    padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.4,
+                vertical: MediaQuery.of(context).size.height * 0.02,
+              ),
+
+              ),
+             const SizedBox(
+                height: 10,
+              ), RoundedElevatedButton(title: 'Dishes ', onPressed: () {
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => const AddPostScreen()));
+              },    padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.4,
+                vertical: MediaQuery.of(context).size.height * 0.02,
+              ),
+              )
+            ],
+          ),
         ),
       ),
 
