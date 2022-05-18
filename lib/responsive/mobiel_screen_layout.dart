@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:secondmd/screens/add_post_screen.dart';
-import 'package:secondmd/utils/colors.dart';
-
 import '../widget/rounded_elecated_button.dart';
 
 class MobileScreenLayout extends StatefulWidget {
