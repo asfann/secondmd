@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:secondmd/resources/firestore_methods.dart';
@@ -9,6 +10,8 @@ import 'package:provider/provider.dart';
 
 import '../model/user.dart';
 import '../providers/user_provider.dart';
+import '../widget/rounded_elecated_button.dart';
+import 'dishes.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -60,7 +63,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 onPressed: () async {
                   Navigator.of(context).pop();
                   Uint8List file = await pickImage(ImageSource.camera);
-
                   setState(() {
                     _file = file;
                   });
@@ -107,16 +109,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
 
-    return _file == null
-        ? Material(
-          child: Center(
-              child: IconButton(
-                icon: const Icon(Icons.upload),
-                onPressed: () => _selectImage(context),
-              ),
-            ),
-        )
-        : Scaffold(
+    return Scaffold(
             appBar: AppBar(
               backgroundColor: mobileBackgroundColor,
               leading: IconButton(
@@ -168,19 +161,36 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       width: 45,
                       child: AspectRatio(
                         aspectRatio: 487 / 451,
-                        child: Container(
+                        child:  _file == null
+                       ? Container(child: IconButton(
+                       icon: const Icon(Icons.upload),
+                         onPressed: () => _selectImage(context),
+                         ),
+                         ):
+                           Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
+
                             image: MemoryImage(_file!),
                             fit: BoxFit.fill,
                             alignment: FractionalOffset.topCenter,
-                          )),
+                          ),
+                          ),
                         ),
                       ),
                     ),
                     const Divider(),
                   ],
-                )
+                ),
+
+                RoundedElevatedButton(title: 'Waiters', onPressed: () {
+
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const DisCard()));
+                },   padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.4,
+                  vertical: MediaQuery.of(context).size.height * 0.02,
+                ),
+                ),
               ],
             ),
           );

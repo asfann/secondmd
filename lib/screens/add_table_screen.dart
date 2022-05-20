@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 
 import '../model/user.dart';
 import '../providers/user_provider.dart';
-import '../widget/comment_card.dart';
-
+import '../widget/rounded_elecated_button.dart';
+import 'dishes.dart';
 class AddTableScreen extends StatefulWidget {
   const AddTableScreen({Key? key, this.snap}) : super(key: key);
 final snap;
@@ -63,6 +63,7 @@ class _AddTableScreen extends State<AddTableScreen> {
     final User user = Provider.of<UserProvider>(context).getUser;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         title: const Text('Post to '),
@@ -118,26 +119,21 @@ class _AddTableScreen extends State<AddTableScreen> {
               const Divider(),
             ],
           ),
-          Column(
-            children: [
-              StreamBuilder(stream: FirebaseFirestore.instance
-                  .collection('tables')
-                  .snapshots(),
-              builder:  (context, snapshot) {
-    if (snapshot.connectionState == ConnectionState.waiting) {
-    return const Center(
-    child: CircularProgressIndicator(),
+
+          RoundedElevatedButton(title: 'Waiters', onPressed: () {
+
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const DisCard()));
+          },   padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.4,
+            vertical: MediaQuery.of(context).size.height * 0.02,
+          ),
+          ),
+        ]
+      )
     );
-    }
-    return ListView.builder(
-    itemCount: (snapshot.data! as dynamic).docs.length,
-    itemBuilder: (context, index) => CommentCard(
-    snap: (snapshot.data! as dynamic).docs[index].data()),
-    );})
-            ],
-          )
-        ],
-      ),
-    );
+
+
   }
 }
+
+
