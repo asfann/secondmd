@@ -23,31 +23,30 @@ class _DisCardState extends State<DisCard> {
                 child: CircularProgressIndicator(),
               );
             }
-            return ListView.builder(
-                itemCount: (snapshot.data! as dynamic).docs.length,
-              itemBuilder:(context, index) => Card(
-                child: Column(
-               children: (snapshot.data as dynamic).docs.map<Widget>((document) {
-                  return ListTile(
-                    title: Text(document['name']),
-                    subtitle: Text(document['description']),
-                    leading: CircleAvatar(
-                      radius: 16,
-                      backgroundImage: NetworkImage(
-                        document['postUrl'],
-                      ),),
-                 trailing: IconButton(
-                 icon: Icon(
-                 Icons.delete,
-                 color: Colors.red,
-                 ),
-                 onPressed: () {
-                   FirestoreMethods().deletePost(document["postId"]);
-                 }
-                  ));
-                }).toList(),
-                ))
-            );},
+            return  SafeArea(
+              child: Column(
+                 children: (snapshot.data as dynamic).docs.map<Widget>((document) {
+                    return ListTile(
+                      title: Text(document['name']),
+                      subtitle: Text(document['description']),
+                      leading: CircleAvatar(
+                        radius: 16,
+                        backgroundImage: NetworkImage(
+                          document['postUrl'],
+                        ),),
+                   trailing: IconButton(
+                   icon: const Icon(
+                   Icons.delete,
+                   color: Colors.red,
+                   ),
+                   onPressed: () {
+                     FirestoreMethods().deletePost(document["postId"]);
+                   }
+                    ));
+                  }).toList(),
+                  ),
+            );
+            },
         ),
       );
   }

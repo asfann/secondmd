@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:secondmd/resources/firestore_methods.dart';
@@ -183,7 +182,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   ],
                 ),
 
-                RoundedElevatedButton(title: 'Waiters', onPressed: () {
+                RoundedElevatedButton(title: 'Dishes', onPressed: () {
 
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const DisCard()));
                 },   padding: EdgeInsets.symmetric(

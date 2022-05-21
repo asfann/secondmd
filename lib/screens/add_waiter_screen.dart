@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:secondmd/resources/firestore_methods.dart';
+import 'package:secondmd/screens/waiter.dart';
 import 'package:secondmd/utils/colors.dart';
 import 'package:secondmd/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../model/user.dart';
 import '../providers/user_provider.dart';
+import '../widget/rounded_elecated_button.dart';
 
 class AddWaiterScreen extends StatefulWidget {
   const AddWaiterScreen({Key? key}) : super(key: key);
@@ -115,7 +117,15 @@ class _AddWaiterScreen extends State<AddWaiterScreen> {
               ),
               const Divider(),
             ],
-          )
+          ),
+          RoundedElevatedButton(title: 'Waiters', onPressed: () {
+
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const WaiCard()));
+          },   padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.4,
+            vertical: MediaQuery.of(context).size.height * 0.02,
+          ),
+          ),
         ],
       ),
     );

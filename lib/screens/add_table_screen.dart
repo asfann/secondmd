@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:secondmd/resources/firestore_methods.dart';
+import 'package:secondmd/screens/tables.dart';
 import 'package:secondmd/utils/colors.dart';
 import 'package:secondmd/utils/utils.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,6 @@ import 'package:provider/provider.dart';
 import '../model/user.dart';
 import '../providers/user_provider.dart';
 import '../widget/rounded_elecated_button.dart';
-import 'dishes.dart';
 class AddTableScreen extends StatefulWidget {
   const AddTableScreen({Key? key, this.snap}) : super(key: key);
 final snap;
@@ -120,9 +120,9 @@ class _AddTableScreen extends State<AddTableScreen> {
             ],
           ),
 
-          RoundedElevatedButton(title: 'Waiters', onPressed: () {
+          RoundedElevatedButton(title: 'Tables', onPressed: () {
 
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const DisCard()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const TabCard()));
           },   padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * 0.4,
             vertical: MediaQuery.of(context).size.height * 0.02,

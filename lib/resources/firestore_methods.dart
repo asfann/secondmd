@@ -106,9 +106,31 @@ class FirestoreMethods {
       print(e.toString());
     }
   }
+
+
+  Future<String> updateWaiter(String surname,
+      String name,String postId,
+      String uid) async {
+
+    String res = "Some error occured";
+    try{
+      Waiter waier = Waiter(
+        uid: uid,
+        name: name,
+        surname: surname,
+        postId: postId,);
+      await _firestore.collection('dishes').doc(postId).update(waier.toJson());
+    res = "success";
+    } catch (err) {
+    res = err.toString();
+    }
+    return res;
+
+    }
+
   Future<void> deleteWaiter(String postId) async {
     try {
-      await _firestore.collection('waiter').doc(postId).delete();
+      await _firestore.collection('waiters').doc(postId).delete();
     } catch (e) {
       print(e.toString());
     }
