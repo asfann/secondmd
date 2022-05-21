@@ -22,18 +22,19 @@ class AddPostScreen extends StatefulWidget {
 class _AddPostScreenState extends State<AddPostScreen> {
   Uint8List? _file;
   final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   bool _isLoading = false;
 
   void postImage(
     String uid,
-    String name,
   ) async {
     setState(() {
       _isLoading = true;
     });
     try {
       String res = await FirestoreMethods().uploadPost(
-          _descriptionController.text, _file!, uid, name);
+          _descriptionController.text, _file!, uid, _nameController.text, int.parse(_priceController.text));
 
       if (res == "success") {
         setState(() {
@@ -120,8 +121,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               actions: [
                 TextButton(
                   onPressed: () => postImage(
-                    user.uid,
-                    user.name,
+                    user.uid
                   ),
                   child: const Text(
                     'Post',
@@ -141,18 +141,39 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   padding: EdgeInsets.only(top: 0),
                 ),
                  const Divider(),
-                Row(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.5,
+                    SingleChildScrollView(
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        child:  TextField(
+                          controller: _nameController,
+                          decoration: const InputDecoration(
+                              hintText: 'Write a caption...',
+                              border: InputBorder.none),
+                          maxLines: 3,
+                        ),
+                      ),
+                    ), SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.3,
                       child:  TextField(
                         controller: _descriptionController,
                         decoration: const InputDecoration(
-                            hintText: 'Write a caption...',
+                            hintText: 'Write a description...',
                             border: InputBorder.none),
-                        maxLines: 8,
+                        maxLines: 3,
+                      ),
+                    ),SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child:  TextField(
+                        controller: _priceController,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                            hintText: 'Write a price...',
+                            border: InputBorder.none),
+                        maxLines: 3,
                       ),
                     ),
                     SizedBox(
@@ -169,7 +190,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
                            Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
-
                             image: MemoryImage(_file!),
                             fit: BoxFit.fill,
                             alignment: FractionalOffset.topCenter,
@@ -181,9 +201,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     const Divider(),
                   ],
                 ),
-
                 RoundedElevatedButton(title: 'Dishes', onPressed: () {
-
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const DisCard()));
                 },   padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.4,

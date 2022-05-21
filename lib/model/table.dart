@@ -4,26 +4,26 @@ class Table {
   final String uid;
   final String name;
   final int tNumber;
-  final String postId;
+  final String tableId;
 
   const Table({
     required this.uid,
     required this.tNumber,
-    required this.postId,
+    required this.tableId,
     required this.name,
   });
 
   Map<String, dynamic> toJson() => {
     "tNumber": tNumber,
-    "surname": name,
-    "postId": postId,
+    "name": name,
+    "tableId": tableId,
     "uid": uid,
   };
 
   static Table fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return Table(
-      postId: snapshot['postId'],
+        tableId: snapshot['tableId'],
         tNumber: snapshot['tNumber'],
         name: snapshot['name'],
         uid: snapshot['uid']);

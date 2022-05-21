@@ -15,6 +15,7 @@ class FirestoreMethods {
     Uint8List file,
     String uid,
     String name,
+      int price,
   ) async {
     String res = "Some error occured";
     try {
@@ -24,11 +25,11 @@ class FirestoreMethods {
       String postId = const Uuid().v1();
       Post post = Post(
           description: description,
+          price: price,
           uid: uid,
           name: name,
           postId: postId,
-          postUrl: photoUrl,);
-
+          postUrl: photoUrl);
       _firestore.collection('dishes').doc(postId).set(
             post.toJson(),
           );
@@ -44,19 +45,18 @@ class FirestoreMethods {
       String surname,
       String uid,
       String name,
-
       ) async {
     String res = "Some error occured";
     try {
 
-      String postId = const Uuid().v1();
+      String waiterId = const Uuid().v1();
             Waiter waiter = Waiter(
                 uid: uid,
                 name: name,
                 surname: surname,
-                postId: postId,);
+              waiterId: waiterId,);
 
-      _firestore.collection('tables').doc(postId).set(
+      _firestore.collection('waiters').doc(waiterId).set(
         waiter.toJson(),
       );
       res = "success";
@@ -70,19 +70,16 @@ class FirestoreMethods {
       int tNumber,
       String uid,
       String name,
-
       ) async {
     String res = "Some error occured";
     try {
-
-      String postId = const Uuid().v1();
+      String tableId = const Uuid().v1();
       Table table = Table(
         uid: uid,
         name: name,
         tNumber: tNumber,
-        postId: postId,);
-
-      _firestore.collection('tables').doc(postId).set(
+        tableId: tableId,);
+      _firestore.collection('tables').doc(tableId).set(
         table.toJson(),
       );
       res = "success";
@@ -109,7 +106,7 @@ class FirestoreMethods {
 
 
   Future<String> updateWaiter(String surname,
-      String name,String postId,
+      String name,String waiterId,
       String uid) async {
 
     String res = "Some error occured";
@@ -118,8 +115,8 @@ class FirestoreMethods {
         uid: uid,
         name: name,
         surname: surname,
-        postId: postId,);
-      await _firestore.collection('dishes').doc(postId).update(waier.toJson());
+        waiterId: waiterId,);
+      await _firestore.collection('dishes').doc(waiterId).update(waier.toJson());
     res = "success";
     } catch (err) {
     res = err.toString();

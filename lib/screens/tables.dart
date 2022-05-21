@@ -28,8 +28,8 @@ class _TabCardState extends State<TabCard> {
               child: Column(
                 children: (snapshot.data as dynamic).docs.map<Widget>((document) {
                   return ListTile(
-                      title: Text(document['surname']),
-                      subtitle: Text(document['email']),
+                      title: Text(document['name']),
+                      subtitle: Text(document['tNumber'].toString()),
 
                       trailing: IconButton(
                           icon: const Icon(
@@ -37,7 +37,7 @@ class _TabCardState extends State<TabCard> {
                             color: Colors.red,
                           ),
                           onPressed: () {
-                            FirestoreMethods().deleteTable(document["postId"]);
+                            FirestoreMethods().deleteTable(document["tableId"]);
                           }
                       ),
                     onTap: () {

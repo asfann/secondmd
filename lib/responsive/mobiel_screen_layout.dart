@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:secondmd/resources/auth_methods.dart';
 import 'package:secondmd/screens/add_post_screen.dart';
 import 'package:secondmd/screens/add_table_screen.dart';
 import 'package:secondmd/screens/add_waiter_screen.dart';
@@ -36,46 +35,42 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          child:  Column(
-            children: [
-              RoundedElevatedButton(title: 'Waiters', onPressed: () {
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Container(
+            child:  Column(
+              children: [
+                RoundedElevatedButton(title: 'Waiters', onPressed: () {
 
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWaiterScreen()));
-              },   padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.4,
-                vertical: MediaQuery.of(context).size.height * 0.02,
-              ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              RoundedElevatedButton(title: 'Tables', onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddTableScreen()));
-             
-              },    padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.4,
-                vertical: MediaQuery.of(context).size.height * 0.02,
-              ),
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AddWaiterScreen()));
+                },   padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.4,
+                  vertical: MediaQuery.of(context).size.height * 0.02,
+                ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                RoundedElevatedButton(title: 'Tables', onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AddTableScreen()));
 
-              ),
-             const SizedBox(
-                height: 10,
-              ), RoundedElevatedButton(title: 'Dishes ', onPressed: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => const AddPostScreen()));
-              },    padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.4,
-                vertical: MediaQuery.of(context).size.height * 0.02,
-              ),
-              ),
-              RoundedElevatedButton(title: 'sign out ', onPressed: () {
-                AuthMethods().signOut();
-              },    padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.4,
-                vertical: MediaQuery.of(context).size.height * 0.02,
-              ),
-              )
-            ],
+                },    padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.4,
+                  vertical: MediaQuery.of(context).size.height * 0.02,
+                ),
+
+                ),
+               const SizedBox(
+                  height: 10,
+                ), RoundedElevatedButton(title: 'Dishes ', onPressed: () {
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => const AddPostScreen()));
+                },    padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.4,
+                  vertical: MediaQuery.of(context).size.height * 0.02,
+                ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

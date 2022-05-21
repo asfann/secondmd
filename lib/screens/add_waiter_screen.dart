@@ -61,7 +61,6 @@ class _AddWaiterScreen extends State<AddWaiterScreen> {
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
@@ -119,7 +118,6 @@ class _AddWaiterScreen extends State<AddWaiterScreen> {
             ],
           ),
           RoundedElevatedButton(title: 'Waiters', onPressed: () {
-
             Navigator.push(context, MaterialPageRoute(builder: (context) => const WaiCard()));
           },   padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * 0.4,

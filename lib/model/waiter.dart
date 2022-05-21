@@ -4,26 +4,26 @@ class Waiter {
   final String surname;
   final String uid;
   final String name;
-  final String postId;
+  final String waiterId;
 
   const Waiter({
-    required this.postId,
+    required this.waiterId,
     required this.uid,
     required this.surname,
     required this.name,
   });
 
   Map<String, dynamic> toJson() => {
-    "postId": postId,
-    "surname": name,
+    "waiterId": waiterId,
+    "name": name,
     "uid": uid,
-    "email": surname,
+    "surname": surname,
   };
 
   static Waiter fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return Waiter(
-      postId: snapshot['postId'],
+        waiterId: snapshot['waiterId'],
         name: snapshot['name'],
         uid: snapshot['uid'],
         surname: snapshot['surname']);

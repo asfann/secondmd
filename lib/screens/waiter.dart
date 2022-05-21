@@ -28,14 +28,14 @@ class _WaiCardState extends State<WaiCard> {
               children: (snapshot.data as dynamic).docs.map<Widget>((document) {
                 return ListTile(
                     title: Text(document['surname']),
-                    subtitle: Text(document['email']),
+                    subtitle: Text(document['name']),
                     trailing: IconButton(
                         icon: const Icon(
                           Icons.delete,
                           color: Colors.red,
                         ),
                         onPressed: () {
-                          FirestoreMethods().deleteWaiter(document["postId"]);
+                          FirestoreMethods().deleteWaiter(document["waiterId"]);
                         }
                     ));
               }).toList(),

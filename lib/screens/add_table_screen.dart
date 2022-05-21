@@ -28,8 +28,8 @@ class _AddTableScreen extends State<AddTableScreen> {
       _isLoading = true;
     });
     try {
-      String res = await FirestoreMethods().uploadWaiter(
-          _numberController.text, uid, _nameController.text);
+      String res = await FirestoreMethods().uploadTable(
+        int.parse(_numberController.text), uid, _nameController.text);
 
       if (res == "success") {
         setState(() {
@@ -98,6 +98,7 @@ class _AddTableScreen extends State<AddTableScreen> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child:  TextField(
+                  keyboardType: TextInputType.number,
                   controller: _numberController,
                   decoration: const InputDecoration(
                       hintText: 'Table number',
@@ -121,7 +122,6 @@ class _AddTableScreen extends State<AddTableScreen> {
           ),
 
           RoundedElevatedButton(title: 'Tables', onPressed: () {
-
             Navigator.push(context, MaterialPageRoute(builder: (context) => const TabCard()));
           },   padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * 0.4,
